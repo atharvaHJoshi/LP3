@@ -1,0 +1,18 @@
+pragma solidity ^0.8.0;
+
+contract Bank{
+    uint public b;
+    function depo() public payable {
+        b+= msg.value;
+    }
+
+    function withd(uint amt) public {
+        require(amt<=b,"Insuffisient");
+        b-=amt;
+        payable(msg.sender).transfer(amt);
+    }
+
+    function getBal() public view returns(uint){
+        return b;
+    }
+}
