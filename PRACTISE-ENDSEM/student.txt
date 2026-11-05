@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StudentD {
+
+    // Structure
+    struct Student {
+        uint id;
+        string name;
+        uint marks;
+    }
+
+    // Array
+    Student[] public students;
+
+    // Add student
+    function addStudent(uint id, string memory name, uint marks) public {
+        students.push(Student(id, name, marks));
+    }
+
+    // Get student details
+    function getStudent(uint index) public view returns(uint, string memory, uint) {
+        Student memory s = students[index];
+        return (s.id, s.name, s.marks);
+    }
+
+    // Get total students
+    function count() public view returns(uint) {
+        return students.length;
+    }
+}
